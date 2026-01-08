@@ -42,7 +42,6 @@ def get_sentence_vector(tokens, model):
         return np.zeros(model.vector_size)
     return np.mean(vectors, axis=0)
 
-# Precompute review vectors
 df["review_vector"] = df["token"].apply(
     lambda x: get_sentence_vector(x, w2v_model)
 )
@@ -55,10 +54,9 @@ top_brands = (
       .index
       .tolist()
 )
-
 top_brands = ["All Brands"] + top_brands
 
-def preprocess_query(text: str):
+def preprocess_query(text):
     text = text.lower()
     text = re.sub(r"[^a-z\s]", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
@@ -77,14 +75,11 @@ def recommend_products(query, brand, max_price, top_n=3):
         lambda x: cosine_similarity([query_vector], [x])[0][0]
     )
 
-    # Filter brand (ONLY if not All Brands)
     if brand != "All Brands":
         df_sim = df_sim[df_sim["brand"].str.lower() == brand.lower()]
 
-    # Filter price
     df_sim = df_sim[df_sim["price"] <= max_price]
 
-    # HARD FILTER: buang smartwatch
     df_sim = df_sim[
         ~df_sim["product"].str.contains("watch|smartwatch", case=False, na=False)
     ]
@@ -98,21 +93,15 @@ def recommend_products(query, brand, max_price, top_n=3):
 
     return top_products, df_sim
 
-def is_corrupted_review(text: str) -> bool:
+def is_corrupted_review(text):
     if not isinstance(text, str):
         return True
-
     if re.search(r"[A-Za-z]{25,}", text):
         return True
-
     if re.search(r"\d+[A-Za-z]{3,}", text):
         return True
-
     space_ratio = text.count(" ") / max(len(text), 1)
-    if space_ratio < 0.08:
-        return True
-
-    return False
+    return space_ratio < 0.08
 
 def get_top_reviews(product_name, df_sim, n=3):
     reviews = df_sim[
@@ -122,29 +111,18 @@ def get_top_reviews(product_name, df_sim, n=3):
 
     reviews = reviews[~reviews["review_text"].apply(is_corrupted_review)]
 
-    return (
-        reviews
-        .drop_duplicates("review_text")
-        .sort_values("similarity", ascending=False)
-        .head(n)
-    )
+    if "similarity" in reviews.columns:
+        reviews = reviews.sort_values("similarity", ascending=False)
+
+    return reviews.drop_duplicates("review_text").head(n)
 
 def run_predict():
     st.title("🎧 Headset Recommendation System")
-    st.write(
-        "Rekomendasi headset berbasis **semantic similarity** "
-        "dari review pengguna."
-    )
+    st.write("Rekomendasi headset berbasis semantic similarity dari review pengguna.")
 
     col1, col2 = st.columns(2)
-
     with col1:
-        selected_brand = st.selectbox(
-            "Brand",
-            top_brands,
-            index=0  # Default: All Brands
-        )
-
+        selected_brand = st.selectbox("Brand", top_brands, index=0)
     with col2:
         max_price = st.slider(
             "Maximum Price ($)",
@@ -174,13 +152,26 @@ def run_predict():
             st.warning("Tidak ditemukan produk yang sesuai.")
             return
 
+        sentiment_source = df_sim[
+            df_sim["product"].isin(top_products["product"])
+        ]
+
+        pos_count = (sentiment_source["label"] == "Positive").sum()
+        neg_count = (sentiment_source["label"] == "Negative").sum()
+        neu_count = (sentiment_source["label"] == "Neutral").sum()
+
+        st.subheader("📊 Sentiment Distribution")
+        c1, c2, c3 = st.columns(3)
+        c1.metric("🟢 Positive", int(pos_count))
+        c2.metric("🟡 Neutral", int(neu_count))
+        c3.metric("🔴 Negative", int(neg_count))
+
         st.subheader("🏆 Top 3 Recommended Headsets")
 
         for idx, row in enumerate(top_products.itertuples(), start=1):
             st.markdown(f"### {idx}. {row.product}")
 
             col_img, col_info = st.columns([1, 2])
-
             with col_img:
                 if isinstance(row.image_url, str):
                     st.image(row.image_url, width=180)
@@ -192,7 +183,6 @@ def run_predict():
                 st.markdown(f"**Relevance:** {row.similarity:.4f}")
 
             st.markdown("**Top Reviews:**")
-
             top_reviews = get_top_reviews(row.product, df_sim)
 
             for i, r in enumerate(top_reviews.itertuples(), start=1):
