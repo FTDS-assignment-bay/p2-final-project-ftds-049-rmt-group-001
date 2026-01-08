@@ -82,6 +82,7 @@ Proyek ini dibangun menggunakan **Python** sebagai bahasa utama, dengan dukungan
 ## 📊 Project Output
 
 [SoundScout Tableau Dashboard](https://public.tableau.com/app/profile/ivan.carlos.tambunan/viz/SoundScout/SoundScoutDashboard?publish=yes)
+[SoundScout App](https://huggingface.co/spaces/zikosetyawan/soundscout-app)
 
 ## 📂 Project Structure
 
@@ -101,7 +102,7 @@ Jika Anda memiliki pertanyaan mengenai proyek ini atau ingin berkolaborasi, sila
 | :--- | :--- | :--- | :--- |
 | **Muhammad Zhafir Abdurrahman** |muhammadzhafirabdurrahman@gmail.com | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/zhafirabdurrahman) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/mzhafirabdurrahman) |
 | **Ivan Carlos Tambunan** | ivantambunan02@gmail.com | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/ivan-carlos02/) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ivancarlostambunan/) |
-| **Muhammad Ziko** | muhammadzhafirabdurrahman@gmail.com | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/zhafirabdurrahman) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/muhammadzhafirabdurrahman) |
+| **Muhammad Ziko** | zikomuhammad2@gmail.com | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/zikosetyawan) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muhammad-ziko-ananda-setyawan-30b40a1b4/) |
 
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
