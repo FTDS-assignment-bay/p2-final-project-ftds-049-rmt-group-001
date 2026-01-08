@@ -69,8 +69,9 @@ Proyek ini dibangun menggunakan **Python** dan **SQL** sebagai bahasa utama, den
 2.  **Data Cleaning & Validation**: 
     * Standardisasi penamaan fitur produk.
     * Menghilangkan duplicate data.
-    * Pemberian kolom baru 'Feature' berdasarkan spliting nama produk
+    * Pemberian kolom baru 'feature' berdasarkan spliting nama produk
     * Pembuatan dataset review untuk modeling.
+    * Validasi data menggunakan Great Expectations
 3.  **Exploratory Data Analysis (EDA)**: Analisis distribusi harga, merek terpopuler dan rata-rata rating
 4.  **Modeling**:
     * Melakukan representasi teks fitur produk ke dalam ruang vektor menggunakan **Word2Vec**.
@@ -88,4 +89,7 @@ Proyek ini dibangun menggunakan **Python** dan **SQL** sebagai bahasa utama, den
 ```
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
-[![NLTK](https://img.shields.io/badge/NLP-Word2Vec-green.svg)](https://radimrehurek.com/gensim/models/word2vec.html)
+[![Framework](https://img.shields.io/badge/Framework-Streamlit-red.svg)](https://streamlit.io/)
+[![Scraping](https://img.shields.io/badge/Library-BeautifulSoup4-green.svg)](https://www.crummy.com/software/BeautifulSoup/)
+[![NLP](https://img.shields.io/badge/NLP-Word2Vec-orange.svg)](https://radimrehurek.com/gensim/models/word2vec.html)
+[![Deployment](https://img.shields.io/badge/Deployment-HuggingFace-yellow.svg)](https://huggingface.co/)
