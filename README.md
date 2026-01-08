@@ -87,6 +87,7 @@ Proyek ini dibangun menggunakan **Python** sebagai bahasa utama, dengan dukungan
 ## 📂 Project Structure
 
 ```text
+├── deployment/               # Kumpulan file untuk deployment di HuggingFace
 ├── data_scraped/             # Kumpulan file json hasil scrapping
 ├── scrape_and_cleaning/      # Script pembersihan dan validasi data
 ├── EDA.ipynb                 # Notebook Explorayoty Data Analysis
