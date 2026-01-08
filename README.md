@@ -95,9 +95,11 @@ Jika Anda memiliki pertanyaan mengenai proyek ini atau ingin berkolaborasi, sila
 
 | Nama Anggota | Kontak | GitHub |
 | :--- | :--- | :--- |
-| **Muhammad Zhafir Abdurrahman** | [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:muhammadzhafirabdurrahman@gmail.com) | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/zhafirabdurrahman) |
+| **Muhammad Zhafir Abdurrahman** | [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:muhammadzhafirabdurrahman@gmail.com) | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/zhafirabdurrahman) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/muhammadzhafirabdurrahman) |
 | **Ivan Carlos T** | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/username) | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/username2) |
 | **Muhammad Ziko** | [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:email3@gmail.com) | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/username3) |
+
+
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/Framework-Streamlit-red.svg)](https://streamlit.io/)
 [![Scraping](https://img.shields.io/badge/Library-BeautifulSoup4-green.svg)](https://www.crummy.com/software/BeautifulSoup/)
