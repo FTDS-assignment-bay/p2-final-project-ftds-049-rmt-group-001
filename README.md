@@ -6,6 +6,8 @@
 
 ---
 
+## 📌 Program Description
+**SoundScout** adalah sistem rekomendasi produk True Wireless Stereo (TWS) yang dirancang untuk membantu pengguna menemukan TWS yang paling sesuai dengan kebutuhan dan preferensi mereka. Sistem ini memanfaatkan analisis ulasan pelanggan berbasis Natural Language Processing (NLP) untuk menghasilkan rekomendasi produk yang relevan, informatif, dan mendukung pengambilan keputusan pembelian secara lebih efisien.
 
 ## 📖 Problem Background
 
