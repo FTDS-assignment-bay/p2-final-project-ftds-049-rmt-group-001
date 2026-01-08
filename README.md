@@ -73,7 +73,7 @@ Proyek ini dibangun menggunakan **Python** sebagai bahasa utama, dengan dukungan
     * Pemberian kolom baru 'feature' berdasarkan spliting nama produk
     * Pembuatan dataset review untuk modeling.
     * Validasi data menggunakan Great Expectations
-3.  **Exploratory Data Analysis (EDA)**: Analisis distribusi harga, merek terpopuler dan rata-rata rating
+3.  **Exploratory Data Analysis (EDA)**: Analisis distribusi harga, merek terpopuler dan rata-rata rating.
 4.  **Modeling**:
     * Melakukan representasi teks fitur produk ke dalam ruang vektor menggunakan **Word2Vec**.
     * Menghitung kedekatan antar produk menggunakan *Cosine Similarity*.
