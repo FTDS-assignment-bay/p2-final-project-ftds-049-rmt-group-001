@@ -1,6 +1,3 @@
-# =========================
-# IMPORT LIBRARIES
-# =========================
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -16,9 +13,6 @@ import nltk
 nltk.download("stopwords")
 nltk.download("punkt_tab")
 
-# =========================
-# LOAD MODEL & DATA
-# =========================
 @st.cache_resource
 def load_model():
     return Word2Vec.load("./src/w2v_headset_model.model")
@@ -32,9 +26,6 @@ df = load_data()
 
 stop_words = set(stopwords.words("english"))
 
-# =========================
-# PARSE TOKEN (CSV SAFE)
-# =========================
 def parse_token(token_str):
     try:
         if isinstance(token_str, str):
@@ -45,23 +36,17 @@ def parse_token(token_str):
 
 df["token"] = df["token"].apply(parse_token)
 
-# =========================
-# SENTENCE VECTOR
-# =========================
 def get_sentence_vector(tokens, model):
     vectors = [model.wv[t] for t in tokens if t in model.wv]
     if not vectors:
         return np.zeros(model.vector_size)
     return np.mean(vectors, axis=0)
 
-# Hitung ulang review_vector (WAJIB)
+# Precompute review vectors
 df["review_vector"] = df["token"].apply(
     lambda x: get_sentence_vector(x, w2v_model)
 )
 
-# =========================
-# TOP 10 BRANDS
-# =========================
 top_brands = (
     df.groupby("brand")["product"]
       .nunique()
@@ -71,9 +56,8 @@ top_brands = (
       .tolist()
 )
 
-# =========================
-# QUERY PREPROCESSING
-# =========================
+top_brands = ["All Brands"] + top_brands
+
 def preprocess_query(text: str):
     text = text.lower()
     text = re.sub(r"[^a-z\s]", " ", text)
@@ -85,9 +69,6 @@ def vectorize_query(query, model):
     tokens = preprocess_query(query)
     return get_sentence_vector(tokens, model)
 
-# =========================
-# RECOMMENDATION LOGIC
-# =========================
 def recommend_products(query, brand, max_price, top_n=3):
     query_vector = vectorize_query(query, w2v_model)
 
@@ -96,8 +77,9 @@ def recommend_products(query, brand, max_price, top_n=3):
         lambda x: cosine_similarity([query_vector], [x])[0][0]
     )
 
-    # Filter brand
-    df_sim = df_sim[df_sim["brand"].str.lower() == brand.lower()]
+    # Filter brand (ONLY if not All Brands)
+    if brand != "All Brands":
+        df_sim = df_sim[df_sim["brand"].str.lower() == brand.lower()]
 
     # Filter price
     df_sim = df_sim[df_sim["price"] <= max_price]
@@ -120,15 +102,12 @@ def is_corrupted_review(text: str) -> bool:
     if not isinstance(text, str):
         return True
 
-    # 1. Kata super panjang tanpa spasi (camelCase / lowercase / mixed)
     if re.search(r"[A-Za-z]{25,}", text):
         return True
 
-    # 2. Angka langsung nyambung huruf
     if re.search(r"\d+[A-Za-z]{3,}", text):
         return True
 
-    # 3. Rasio spasi terlalu kecil (indikasi kata nempel)
     space_ratio = text.count(" ") / max(len(text), 1)
     if space_ratio < 0.08:
         return True
@@ -150,9 +129,6 @@ def get_top_reviews(product_name, df_sim, n=3):
         .head(n)
     )
 
-# =========================
-# STREAMLIT UI
-# =========================
 def run_predict():
     st.title("🎧 Headset Recommendation System")
     st.write(
@@ -164,8 +140,9 @@ def run_predict():
 
     with col1:
         selected_brand = st.selectbox(
-            "Brand (Top 10)",
-            top_brands
+            "Brand",
+            top_brands,
+            index=0  # Default: All Brands
         )
 
     with col2:
