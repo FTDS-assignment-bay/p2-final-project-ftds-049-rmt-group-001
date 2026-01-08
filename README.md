@@ -44,7 +44,7 @@ Dataset ini dikumpulkan melalui proses *web scraping* menggunakan **BeautifulSou
 
 ## 🛠️ Technology Stack & Libraries
 
-Proyek ini dibangun menggunakan **Python** dan **SQL** sebagai bahasa utama, dengan dukungan ekosistem library berikut:
+Proyek ini dibangun menggunakan **Python** sebagai bahasa utama, dengan dukungan ekosistem library berikut:
 
 | No | Library | Fungsi |
 | :--- | :--- | :--- |
