@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="soundscoutlogo.png" alt="SoundScout Logo" width="300" style="margin-bottom: 0px;">
+  <img src="img.png" alt="SoundScout Logo" width="200" style="margin-bottom: 0px;">
   <h1 style="margin-top: 0px;">SoundScout</h1>
   <p><i>Navigate the Noise, Find Your Perfect Sound</i></p>
 </div>
